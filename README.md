@@ -92,9 +92,11 @@ License
 This project is licensed under the MIT License.
 
 Acknowledgments
+
 This project is built using Django Rest Framework, which provides a powerful framework for building RESTful APIs.
 Special thanks to the Django and DRF communities for their contributions and support.
 arduino
+
 Copy code
 
 You can replace the content in this template with information specific to your project, including project name, description, installation instructions, usage guidelines, and more.
