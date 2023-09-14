@@ -45,23 +45,23 @@ class BaseAPI(APIView):
             return Response({'status_code': 200, "payload": serializer.data, 'message': 'Data saved'})
         return Response({'status_code': 403, 'errors': serializer.errors, 'message': 'Invalid data'})
 
-    def put(self, request, id):
+    def put(self, request, id):  # Add 'id' parameter
         """
-        Handle PUT request to update an existing object.
-        """
+         Handle PUT request to update an existing object.
+         """
         logger.info(
-            f'PUT request received for {self.model_class.__name__}. '
-            f'Method: {request.method}, URL: {request.get_full_path()}'
+        f'PUT request received for {self.model_class.__name__}. '
+        f'Method: {request.method}, URL: {request.get_full_path()}'
         )
         try:
-            instance = self.model_class.objects.get(id=id)
+           instance = self.model_class.objects.get(id=id)
         except self.model_class.DoesNotExist:
-            return Response({'status_code': 404, 'message': 'Object not found'})
+             return Response({'status_code': 404, 'message': 'Object not found'})
 
         serializer = self.serializer_class(instance, data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response({'status_code': 200, 'payload': serializer.data, 'message': 'Data updated'})
+           serializer.save()
+           return Response({'status_code': 200, 'payload': serializer.data, 'message': 'Data updated'})
         return Response({'status_code': 403, 'errors': serializer.errors, 'message': 'Invalid data'})
 
     def patch(self, request, id):
